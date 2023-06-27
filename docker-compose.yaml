@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: php
+    restart: always
+    ports:
+      - 352:80
+    volumes:
+      - ./www:/var/www/html
+      - ./config:/usr/local/etc/php
+    networks:
+      - server
+  db:
+    image: mysql:8.0.33
+    container_name: db
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=$0352
+      - MYSQL_DATABASE=php
+    networks:
+      - server
+volumes:
+  html: {}
+  config: {}
+networks:
+  server:
+    driver: "bridge"
