@@ -9,6 +9,7 @@ services:
     ports:
       - 352:80
     volumes:
+      - /var/www/html/vendor
       - ./www:/var/www/html
       - ./config:/usr/local/etc/php
     networks:
