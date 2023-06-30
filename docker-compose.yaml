@@ -13,15 +13,17 @@ services:
       - ./config:/usr/local/etc/php
     networks:
       - server
-  db:
-    image: mysql:8.0.33
+  postgres:
+    image: postgres:15.3
     container_name: db
     restart: always
     ports:
-      - 3306:3306
+      - 5432:5432
     environment:
-      - MYSQL_ROOT_PASSWORD=$0352
-      - MYSQL_DATABASE=php
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=0352
+      - POSTGRES_DB=php
     networks:
       - server
 volumes:
