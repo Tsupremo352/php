@@ -1,4 +1,4 @@
 <?php
     include './config/config.php';
-    Connection::connect();
+    echo Connection::select('test');
 ?>
